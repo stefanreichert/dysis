@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Application Plug-in
+Bundle-SymbolicName: net.sf.dysis.application; singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: net.sf.dysis.application.internal.Activator
+Bundle-Vendor: Stefan Reichert
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.equinox.security,
+ org.eclipse.ui.cheatsheets;bundle-version="3.3.101",
+ net.sf.dysis.base.ui.authentication,
+ net.sf.dysis.base.ui.dataprovider;bundle-version="0.1.0",
+ net.sf.dysis.application.update;bundle-version="0.1.0",
+ net.sf.dysis.core.client;bundle-version="0.1.0",
+ net.sf.dysis.base.ui,
+ org.apache.log4j;bundle-version="1.2.14"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Export-Package: net.sf.dysis.application

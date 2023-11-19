@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.6.0-b105 (Sun Microsystems Inc.)
+Bundle-ManifestVersion: 2
+Bundle-Name: Utility Bundle for Spring and Extensions
+Bundle-SymbolicName: org.eclipse.springframework.util; singleton:=true
+Bundle-Version: 1.0.1
+Bundle-Vendor: Martin Lippert
+Bundle-Activator: org.eclipse.springframework.util.Activator
+Import-Package: org.eclipse.core.runtime,org.osgi.framework,org.osgi.u
+ til.tracker,org.springframework.beans.factory,org.springframework.con
+ text,org.springframework.core.io.support
+Bundle-ActivationPolicy: lazy
+Export-Package: org.eclipse.springframework.util
+Bundle-ClassPath: springextensionutils.jar
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+

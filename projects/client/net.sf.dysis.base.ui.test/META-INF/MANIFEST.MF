@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Application Test Fragment
+Bundle-SymbolicName: net.sf.dysis.base.ui.test;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Fragment-Host: net.sf.dysis.base.ui;bundle-version="0.1.0"
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ net.sf.dysis.planning.ui;bundle-version="0.1.0",
+ org.junit
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: net.sf.dysis.base.ui.test

@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:osgi="http://www.springframework.org/schema/osgi"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+    
+    <!-- get the promoted OSGi service as reference -->
+    <osgi:reference id="personRemoteServiceOSGi" interface="net.sf.dysis.resource.core.service.IPersonRemoteService"/>
+    
+    <!-- create the IDataProvider for projects -->
+	<bean id="resourceDataProvider" class="net.sf.dysis.resource.ui.dataprovider.ResourceDataProvider">
+		<property name="personRemoteService" ref="personRemoteServiceOSGi"/>
+	</bean>
+       
+</beans>

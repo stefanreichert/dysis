@@ -1,0 +1,67 @@
+
+    
+    private void setupAssist(Composite composite){
+        final Composite composite_1 = new Composite(composite, SWT.NONE);
+        toolkit.paintBordersFor(composite_1);
+        toolkit.adapt(composite_1);
+
+        CCombo combo = new CCombo(composite_1, SWT.NONE);
+        toolkit.adapt(combo, true, true);
+        combo.setBounds(63, 30, 139, 16);
+        combo.setItems(new String[] { "Projekt A", "Projekt B", "Projekt C",
+                "Projekt D", "Projekt E" });
+
+        Text text = toolkit.createText(composite_1, null, SWT.NONE);
+        text.setBounds(296, 30, 133, 16);
+
+        final Label projektLabel = toolkit.createLabel(composite_1, "Projekt:",
+                SWT.NONE);
+        projektLabel.setBounds(10, 30, 47, 16);
+
+        final Label projektLabel_1 = toolkit.createLabel(composite_1,
+                "Projekt:", SWT.NONE);
+        projektLabel_1.setBounds(243, 30, 47, 16);
+
+        initFieldAssist(text);
+    }
+
+    private void initFieldAssist(Text text) {
+        try {
+            // Setup postal code completion
+            ContentProposalAdapter exampleAdapter = new ContentProposalAdapter(
+                    text, new TextContentAdapter(),
+                    new SimpleContentProposalProvider(new String[] {
+                            "Projekt A", "Projekt B", "Projekt C", "Projekt D",
+                            "Projekt E" }), null, null);
+            exampleAdapter.setAutoActivationDelay(200);
+            exampleAdapter.setLabelProvider(new LabelProvider() {
+
+                /**
+                 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
+                 */
+                @Override
+                public String getText(Object element) {
+                    return ((IContentProposal) element).getContent();
+                }
+
+                /**
+                 * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
+                 */
+                @Override
+                public Image getImage(Object element) {
+                    return ResourceManager.getPluginImage(
+                            net.sf.dysis.timesheet.ui.Activator.getDefault(),
+                            "img/project.gif");
+                }
+            });
+
+            exampleAdapter
+                    .setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+        }
+        catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+
+    }
+
+    

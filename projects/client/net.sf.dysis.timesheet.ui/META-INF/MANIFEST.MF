@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Timesheet UI Plug-in
+Bundle-SymbolicName: net.sf.dysis.timesheet.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: net.sf.dysis.timesheet.ui.Activator
+Bundle-Vendor: Stefan Reichert
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ org.eclipse.swt.nebula,
+ net.sf.dysis.application;bundle-version="0.1.0",
+ net.sf.dysis.base.ui,
+ net.sf.dysis.core.client;bundle-version="0.1.0",
+ net.sf.dysis.base.ui.dataprovider;bundle-version="0.1.0",
+ net.sf.dysis.base.ui.authentication;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+

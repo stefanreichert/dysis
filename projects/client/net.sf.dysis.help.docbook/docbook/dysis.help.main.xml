@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE
+book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd"[
+<!ENTITY gettingstarted SYSTEM "components/gettingstarted.xml">
+<!ENTITY konzepteideen SYSTEM "components/konzepteideen.xml">
+<!ENTITY projekteaufgabenresourcen SYSTEM "components/projekteaufgabenresourcen.xml">
+<!ENTITY zeiterfassung SYSTEM "components/zeiterfassung.xml">
+]>
+<book>
+  <bookinfo>
+    <title>Dysis Online Hilfe</title>
+    <subtitle>User Manual</subtitle>
+    <releaseinfo>Version 0.1.0</releaseinfo>
+    <pubdate>(Work in progress)</pubdate>
+    <authorgroup>
+      <author>
+        <firstname>Stefan</firstname>
+        <surname>Reichert</surname>
+      </author>
+    </authorgroup>
+    <legalnotice>
+      (c) 2009 Stefan Reichert
+    </legalnotice>
+  </bookinfo>
+  <toc />
+ 
+  &gettingstarted;
+  &konzepteideen;
+  &projekteaufgabenresourcen;
+  &zeiterfassung;
+</book>

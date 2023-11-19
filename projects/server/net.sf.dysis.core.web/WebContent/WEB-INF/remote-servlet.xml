@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" name="/projectservice">
+    	<property name="service" ref="projectRemoteService"/>
+    	<property name="serviceInterface" value="net.sf.dysis.planing.core.service.IProjectRemoteService"/>
+	</bean>
+	<bean class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" name="/activityservice">
+    	<property name="service" ref="activityRemoteService"/>
+    	<property name="serviceInterface" value="net.sf.dysis.planing.core.service.IActivityRemoteService"/>
+	</bean>
+	<bean class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" name="/personservice">
+    	<property name="service" ref="personRemoteService"/>
+    	<property name="serviceInterface" value="net.sf.dysis.resource.core.service.IPersonRemoteService"/>
+	</bean>
+	<bean class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter" name="/sessionservice">
+    	<property name="service" ref="sessionRemoteService"/>
+    	<property name="serviceInterface" value="net.sf.dysis.util.core.service.ISessionRemoteService"/>
+	</bean>
+</beans>

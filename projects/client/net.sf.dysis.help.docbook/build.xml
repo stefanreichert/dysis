@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project name="Dysis Online Help" default="build.dysis.help">
+	<property file="build.properties" />
+	<path id="saxon.classpath">
+		<pathelement location="${saxon.lib.path}" />
+	</path>
+	<target name="build.dysis.help">
+		<java fork="true" dir="${output.help.dir}" failonerror="true" classname="com.icl.saxon.StyleSheet">
+			<classpath refid="saxon.classpath" />
+			<arg value="${docbook.source.file}" />
+			<arg value="${stylesheet.file}" />
+		</java>
+	</target>
+</project>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="sessionService">
+		<property name="proxyInterfaces" value="net.sf.dysis.util.core.service.ISessionService"/>
+		<property name="target" ref="sessionServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.util.core.service.SessionServiceImpl" id="sessionServiceTarget">
+		
+	<property name="personService" ref="personService"/>
+
+	<property name="sessionDAO" ref="sessionDAO"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="sessionRemoteService">
+		<property name="proxyInterfaces" value="net.sf.dysis.util.core.service.ISessionRemoteService"/>
+		<property name="target" ref="sessionRemoteServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+	<value>serviceExceptionAdvice</value>
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.util.core.service.SessionRemoteServiceImpl" id="sessionRemoteServiceTarget">
+		
+	<property name="sessionService" ref="sessionService"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="transformationService">
+		<property name="proxyInterfaces" value="net.sf.dysis.util.core.service.ITransformationService"/>
+		<property name="target" ref="transformationServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.util.core.service.TransformationServiceImpl" id="transformationServiceTarget">
+		
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="projectService">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.service.IProjectService"/>
+		<property name="target" ref="projectServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.service.ProjectServiceImpl" id="projectServiceTarget">
+		
+	<property name="projectDAO" ref="projectDAO"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="projectRemoteService">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.service.IProjectRemoteService"/>
+		<property name="target" ref="projectRemoteServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+	<value>serviceExceptionAdvice</value>
+	
+	<value>securityAdvice</value>
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.service.ProjectRemoteServiceImpl" id="projectRemoteServiceTarget">
+		
+	<property name="projectService" ref="projectService"/>
+
+	<property name="transformationService" ref="transformationService"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="activityService">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.service.IActivityService"/>
+		<property name="target" ref="activityServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.service.ActivityServiceImpl" id="activityServiceTarget">
+		
+	<property name="activityDAO" ref="activityDAO"/>
+
+	<property name="timeEntryDAO" ref="timeEntryDAO"/>
+
+	<property name="transformationService" ref="transformationService"/>
+
+	<property name="personService" ref="personService"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="activityRemoteService">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.service.IActivityRemoteService"/>
+		<property name="target" ref="activityRemoteServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+	<value>serviceExceptionAdvice</value>
+	
+	<value>securityAdvice</value>
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.service.ActivityRemoteServiceImpl" id="activityRemoteServiceTarget">
+		
+	<property name="activityService" ref="activityService"/>
+
+	<property name="transformationService" ref="transformationService"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="personService">
+		<property name="proxyInterfaces" value="net.sf.dysis.resource.core.service.IPersonService"/>
+		<property name="target" ref="personServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.resource.core.service.PersonServiceImpl" id="personServiceTarget">
+		
+	<property name="personDAO" ref="personDAO"/>
+
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="personRemoteService">
+		<property name="proxyInterfaces" value="net.sf.dysis.resource.core.service.IPersonRemoteService"/>
+		<property name="target" ref="personRemoteServiceTarget"/>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				
+	
+	<value>serviceExceptionAdvice</value>
+	
+	<value>securityAdvice</value>
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.resource.core.service.PersonRemoteServiceImpl" id="personRemoteServiceTarget">
+		
+	<property name="personService" ref="personService"/>
+
+	<property name="transformationService" ref="transformationService"/>
+
+		
+	
+
+	</bean>
+
+</beans>

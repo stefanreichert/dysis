@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WebApp_ID" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<display-name>Dysis</display-name>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>net.sf.dysis.core</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:applicationContext.xml, 
+			classpath:applicationContext-gen.xml, 
+			classpath:applicationContext-datasource.xml, 
+			classpath:applicationContext-integration-gen.xml, 
+			classpath:applicationContext-service-gen.xml
+		</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+
+	<!-- This listener configures Log4j as defined by [/src/log4j.properties] -->
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+
+	<!-- This listener loads our application context [/WEB-INF/applicationContext] -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<!-- Here comes the dispatcher servlet that delegates to our exported services. -->
+	<servlet>
+		<servlet-name>remote</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!--  
+		The frontend handles ALL /remote/* URL's. Please note that these URL's are virtual 
+		and don't correspondend to any HTML files but exported services instead.		
+		Also note that JSP's aren't mapped to the frontend servlet!!!
+	-->
+	<servlet-mapping>
+		<servlet-name>remote</servlet-name>
+		<url-pattern>/remote/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Filter for HttpRequestFilter -->
+	<filter>
+		<filter-name>ContextFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>contextProviderFilter</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ContextFilter</filter-name>
+		<url-pattern>/remote/*</url-pattern>
+	</filter-mapping>
+</web-app>

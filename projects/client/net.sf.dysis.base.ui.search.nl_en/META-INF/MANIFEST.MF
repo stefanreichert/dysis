@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Base UI Search NL_en Fragment
+Bundle-SymbolicName: net.sf.dysis.base.ui.search.nl_en; singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Fragment-Host: net.sf.dysis.base.ui.search
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

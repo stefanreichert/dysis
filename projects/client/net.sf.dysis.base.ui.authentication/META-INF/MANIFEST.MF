@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Base UI Authentication Plug-in
+Bundle-SymbolicName: net.sf.dysis.base.ui.authentication; singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: net.sf.dysis.base.ui.authentication
+Require-Bundle: org.eclipse.core.runtime

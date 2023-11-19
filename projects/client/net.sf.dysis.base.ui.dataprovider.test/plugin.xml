@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="net.sf.dysis.base.ui.dataprovider">
+      <provider
+            class="net.sf.dysis.base.ui.dataprovider.test.util.PeoplePeterDataProvider"
+            id="net.sf.dysis.base.ui.dataprovider.test.dataprovider.PeoplePeterDataProvider">
+         <cachingStrategy
+               class="net.sf.dysis.base.ui.dataprovider.cache.SimpleCachingStrategy"
+               entryTimeOut="1000"
+               entryTimeToLive="1500">
+         </cachingStrategy>
+      </provider>
+      <provider
+            class="net.sf.dysis.base.ui.dataprovider.test.util.PeopleStefanDataProvider"
+            id="net.sf.dysis.base.ui.dataprovider.test.dataprovider.PeopleStefanDataProvider">
+      </provider>
+   </extension>
+
+</plugin>

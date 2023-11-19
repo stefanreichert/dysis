@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:context.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Hibernate session factory -->
+	<bean class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" id="sessionFactory">
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+		<property name="annotatedClasses">
+      		<list>
+	      	
+		        <value>net.sf.dysis.util.core.domain.SessionImpl</value>
+		    
+		        <value>net.sf.dysis.planing.core.domain.ProjectImpl</value>
+		    
+		        <value>net.sf.dysis.planing.core.domain.ActivityImpl</value>
+		    
+		        <value>net.sf.dysis.planing.core.domain.TimeEntryImpl</value>
+		    
+		        <value>net.sf.dysis.resource.core.domain.PersonImpl</value>
+		    
+      		</list>
+      	</property>
+	    <property name="hibernateProperties">
+			<props>
+			
+	
+		
+        	<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		
+        	<prop key="hibernate.connection.url">${jdbc.driverClassName}</prop>
+		
+        	<prop key="hibernate.connection.username">${jdbc.username}</prop>
+		
+        	<prop key="hibernate.connection.password">${jdbc.password}</prop>
+		
+        	<prop key="hibernate.connection.driver_class">${jdbc.url}</prop>
+		
+        	<prop key="hibernate.show_sql">true</prop>
+		
+        	<prop key="hibernate.max_fetch_depth">1</prop>
+		
+        	<prop key="hibernate.default_batch_fetch_size">8</prop>
+		
+        	<prop key="hibernate.cglib.use_reflection_optimizer">false</prop>
+		
+	
+
+			</props>
+		</property>
+	</bean>
+	<bean class="org.springframework.orm.hibernate3.HibernateInterceptor" id="hibernateInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+</beans>

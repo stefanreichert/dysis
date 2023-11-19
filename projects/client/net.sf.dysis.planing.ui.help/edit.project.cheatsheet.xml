@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Projekt bearbeiten">
+   <intro>
+      <description>
+         <b>Projekt bearbeiten</b>
+Diese Cheat Sheet führt durch den Prozess zum Bearbeiten eines Projekts. Dabei wird hierfür ein Projekt aus dem Projektnavigator View ausgewählt.
+      </description>
+   </intro>
+   <item
+         title="Projekt auswählen">
+      <description>
+         Um ein Projekt auszuwählen führen Sie bitte die folgenden Schritte aus:
+      </description>
+      <subitem
+            label="Öffnen bzw. Selektieren Sie den View &quot;Projektnavigator&quot;">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=net.sf.dysis.planning.ui.view.ProjectNavigator)"/>
+      </subitem>
+      <subitem
+            label="Wählen Sie aus der Liste von Projekten ein Projekt aus.">
+      </subitem>
+      <subitem
+            label="Öffnen Sie das Kontextmenü des ausgewählten Projekts und wählen Sie den Eintrag &quot;Projekt bearbeiten&quot;.">
+      </subitem>
+   </item>
+   <item
+         title="Projekt bearbeiten">
+      <description>
+         Berabeiten Sie im geöffneten Editor die gewünschten Felder. Der Editor wird dabei als &apos;editiert&apos; gekennzeichnet.
+      </description>
+   </item>
+   <item
+         title="Projekt speichern">
+      <description>
+         Zum Speichern des neuen Zustands drücken Sie entweder die Tastenkombination &quot;Ctrl+S&quot; oder das Diskettensymbol der Toolbar unterhalb des Hauptmenüs.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.file.save"/>
+   </item>
+</cheatsheet>

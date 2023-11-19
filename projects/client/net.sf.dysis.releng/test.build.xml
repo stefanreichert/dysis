@@ -1,0 +1,35 @@
+<project basedir="." name="net.sf.dysis.releng.test" default="prepare.test.client">
+    <property file="test.build.properties" />
+	
+	<path id="test.compile.classpath">
+        <fileset dir="${test.directory}/plugins">
+            <include name="**/*.jar" />
+            <include name="org.junit**/*" />
+        </fileset>
+    </path>
+
+    <target name="export.distribution">
+        <delete dir="${test.directory}" />
+        <unzip src="dist/dysis-win32.win32.x86.zip" dest="${test.root}" />
+        <copy todir="${test.directory}/plugins">
+            <fileset dir="${test.pde.runtime}">
+                <include name="**/*" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="export.test.bundle">
+        <mkdir dir="../${test.plugin}/dist/bin" />
+        <javac classpathref="test.compile.classpath" destdir="../${test.plugin}/dist/bin" encoding="Cp1252" debuglevel="lines,vars,source">
+            <src path="../${test.plugin}/src" />
+        </javac>
+        <jar destfile="${test.directory}/plugins/${test.plugin}.jar" manifest="../${test.plugin}/META-INF/MANIFEST.MF">
+            <fileset dir="../${test.plugin}/dist/bin">
+                <include name="**/*.class" />
+            </fileset>
+        </jar>
+        <delete dir="../${test.plugin}/dist" />
+    </target>
+
+    <target name="prepare.test.client" depends="export.distribution, export.test.bundle"/>
+</project>

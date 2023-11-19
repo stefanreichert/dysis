@@ -1,0 +1,15 @@
+<part>
+    <title>Konzepte und Ideen</title>
+    <chapter>
+        <title>Konzept A</title>
+        <para>
+            Hier steht die Beschreibung von Konzept A.
+        </para>
+    </chapter>
+    <chapter>
+        <title>Konzept B</title>
+        <para>
+            Hier steht die Beschreibung von Konzept B.
+        </para>
+    </chapter>
+</part>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="ProjectNavigator">
+      <description>Der Projektnavigator bietet eine Übersicht der zur Verfügung stehenden Projekte und deren Aufgaben. Ein Eintrag im Projekt Navigator bietet ein Kontextmenü, mit dem der Projekt Editor geöffnet werden kann und das Projekt bearbeitet werden kann.</description>
+      <topic href="html/projektnavigator.html" label="Details zum Aufbau"/>
+      <topic href="html/kontextmenu.html" label="Das Kontextmenü"/>
+      <command label="Bearbeiten eines Projekts" serialization="org.eclipse.ui.cheatsheets.openCheatSheet(cheatSheetId=net.sf.dysis.planning.ui.help.cheatsheet.editproject)"/>
+   </context>
+</contexts>

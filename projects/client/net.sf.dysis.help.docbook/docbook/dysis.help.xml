@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE
+book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book>
+    <bookinfo>
+        <title>Dysis Online Hilfe</title>
+        <subtitle>User Manual</subtitle>
+        <releaseinfo>Version 0.1.0</releaseinfo>
+        <pubdate>(Work in progress)</pubdate>
+        <authorgroup>
+            <author>
+                <firstname>Stefan</firstname>
+                <surname>Reichert</surname>
+            </author>
+        </authorgroup>
+        <legalnotice>
+            (c) 2009 Stefan Reichert
+        </legalnotice>
+    </bookinfo>
+    <toc />
+    <part>
+        <title>Getting Started</title>
+        <chapter>
+            <title>Übersicht</title>
+            <para>
+                Hier steht die Beschreibung von Konzept A.
+            </para>
+        </chapter>
+    </part>
+    <part>
+        <title>Konzepte und Ideen</title>
+        <chapter>
+            <title>Konzept A</title>
+            <para>
+                Hier steht die Beschreibung von Konzept A.
+            </para>
+        </chapter>
+        <chapter>
+            <title>Konzept B</title>
+            <para>
+                Hier steht die Beschreibung von Konzept B.
+            </para>
+        </chapter>
+    </part>
+    <part>
+        <title>Projekte, Aufgaben und Resourcen</title>
+        <chapter>
+            <title>Projekte</title>
+            <para>
+                Hier steht die etwas über Projekte. Beispielsweise etwas über den Projektnavigator view.
+            </para>
+        </chapter>
+        <chapter>
+            <title>Aufgaben</title>
+            <para>
+                Hier steht die etwas über Aufgaben.
+            </para>
+        </chapter>
+        <chapter>
+            <title>Resourcen</title>
+            <para>
+                Hier steht die etwas über Resourcen.
+            </para>
+        </chapter>
+    </part>
+    <part>
+        <title>Zeiterfassung</title>
+        <chapter>
+            <title>Zeiten erfassen</title>
+            <para>
+                Hier steht die etwas über Zeiterfassung.
+            </para>
+        </chapter>
+    </part>
+</book>

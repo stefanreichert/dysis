@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Core Client OSGi Plug-in
+Bundle-SymbolicName: net.sf.dysis.core.client;singleton:=true
+Bundle-Version: 0.1.0
+Bundle-Vendor: Stefan Reichert
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.eclipse.ui;bundle-version="3.4.1",
+ com.springsource.org.aopalliance;bundle-version="1.0.0",
+ org.springframework.bundle.spring.aop;bundle-version="2.5.5",
+ org.springframework.bundle.spring.beans;bundle-version="2.5.5",
+ org.springframework.bundle.spring.context;bundle-version="2.5.5",
+ org.springframework.bundle.spring.context.support;bundle-version="2.5.5",
+ org.springframework.bundle.spring.core;bundle-version="2.5.5",
+ org.springframework.bundle.spring.web;bundle-version="2.5.5",
+ org.apache.log4j;bundle-version="1.2.14"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: .,
+ lib/net.sf.dysis.core.client.jar
+Export-Package: net.sf.dysis.core.client.spring,
+ net.sf.dysis.planing.core.dto,
+ net.sf.dysis.planing.core.service,
+ net.sf.dysis.resource.core.dto,
+ net.sf.dysis.resource.core.service,
+ net.sf.dysis.system.core,
+ net.sf.dysis.util.core.service
+Bundle-Activator: net.sf.dysis.core.client.internal.Activator

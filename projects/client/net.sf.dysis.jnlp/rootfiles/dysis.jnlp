@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<jnlp spec="1.0+" codebase="file:/d:/site" href="dysis.jnlp">
+	<information>
+		<title>Dysis JNLP Feature</title>
+		<vendor>Stefan Reichert</vendor>
+        <icon kind="splash" href="splash.bmp"/>
+		<offline-allowed/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+    <application-desc main-class="org.eclipse.equinox.launcher.WebStartMain">
+        <argument>-nosplash </argument>
+    </application-desc>
+	<resources>
+        <jar href="plugins/org.eclipse.equinox.launcher_1.0.101.R34x_v20080819.jar"/>
+		<j2se version="1.5+" />
+		<extension href="features/net.sf.dysis_0.1.0.jnlp" />
+		<extension href="features/net.sf.dysis.additions_0.1.0.jnlp" />
+		<extension href="features/org.eclipse.rcp_3.4.100.r341_v20080814-989JESIEdAciFYfkZZsBfSwQ2341.jnlp" />
+        <property name="eclipse.product" value="net.sf.dysis.application.dysis_product"/>
+	</resources>
+    <resources os="Windows">
+        <property name="osgi.instance.area" value="d:/temp/.dysis_jnlp"/>
+        <property name="osgi.configuration.area" value="d:/temp/.dysis_jnlp"/>
+    </resources>
+</jnlp>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Logging Configuration Fragment
+Bundle-SymbolicName: net.sf.dysis.logging; singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Fragment-Host: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: configuration/
+Require-Bundle: org.eclipse.core.runtime
+Export-Package: net.sf.dysis.logging.appender

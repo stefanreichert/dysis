@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="net.sf.dysis.base.ui.search" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="net.sf.dysis.base.ui.search" id="configuration" name="Configuration"/>
+      </appinfo>
+      <documentation>
+         &lt;p&gt;The &lt;code&gt;search&lt;/code&gt; extension points defines a configuration used for a search. A search consists of a view which hosts a list displaying the result of a performed search. The criteria are requested by a dialog. To perform a new search, an icon in the toolbar of the view is provided.&lt;/p&gt;
+&lt;p&gt;All searches previously performed are kept within a history. These searches can either be repeated by choosing a particular action in the toolbar of the view or by recalling it&apos;s criteria in the dialog.&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="configuration" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="configuration">
+      <annotation>
+         <appinfo>
+            <meta.element labelAttribute="name" icon="/com.lhsystems.rcp.ui.search/img/search.gif"/>
+         </appinfo>
+         <documentation>
+            Represents a configuration for a search. A configuration provides all data necessary to create a particular search modul.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="resultList"/>
+            <element ref="predefinedSearchCriteria" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A unique identifier for the search.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A name for the search.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="criteriaDialogProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A class providing an individual criteria-dialog for the search.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="runAsJob" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  Flag whether to execute the search within a job or not. If this flag is set to false, the search is performed within the UI-Thread.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="search" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A class which actually performs the search.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="resultList">
+      <annotation>
+         <documentation>
+            Represents the result list of the search. It provides the different columns of the list and other information concerning sorting. The order of the columns in the GUI depends on their order in this configuration.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="column" minOccurs="1" maxOccurs="unbounded"/>
+            <element ref="sortingAspectGroup" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="labelProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A class providing the labels of the cells of resultList
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="defaultAction" type="string">
+            <annotation>
+               <documentation>
+                  A class representing the action to be executed on DoubleClick or by hitting the Enter-key while resultList is focussed.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="com.lhsystems.rcp.ui.search.configuration.detail.ISearchResultListActionDelegate"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="allowMultiselection" type="boolean">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="pageSize" type="string" use="default" value="500">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="column">
+      <annotation>
+         <appinfo>
+            <meta.element labelAttribute="header"/>
+         </appinfo>
+         <documentation>
+            A column of the result list. A column may supply an aspect which is used to sort the resultList on clicking the columnheader.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="sortingAspect" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="header" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The header of the column.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="width" type="string">
+            <annotation>
+               <documentation>
+                  The width of the column.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="resizable" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  A flag whether the column is resizable.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="alignment">
+            <annotation>
+               <documentation>
+                  The alignment of the content of the column.
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="lead">
+                  </enumeration>
+                  <enumeration value="center">
+                  </enumeration>
+                  <enumeration value="trail">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="sortingAspectGroup">
+      <annotation>
+         <appinfo>
+            <meta.element labelAttribute="name"/>
+         </appinfo>
+         <documentation>
+            A group of sorting aspects which apply to the result list. The defined groups are listed in a menu which can be accessed via the toolbar of the result view.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="sortingAspect" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A name for the group. The name will be displayed in the toolbarmenu.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="sortingAspect">
+      <annotation>
+         <appinfo>
+            <meta.element labelAttribute="id"/>
+         </appinfo>
+         <documentation>
+            An aspect of an object.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A unique identifier for the aspect.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  A class reducing an object to an aspect of the object. Either this class or the attribute must be defined to enable sorting. If both values are defined, the class wins.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="order" use="required">
+            <annotation>
+               <documentation>
+                  The order to apply on the initial sorting by this aspect.
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="asc">
+                  </enumeration>
+                  <enumeration value="desc">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+         <attribute name="attribute" type="string">
+            <annotation>
+               <documentation>
+                  An attribute of the element displayed in the table. Either this attribute or a class reducing an object to an aspect of the object must be defined to enable sorting. If both values are defined, the class wins.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="numeric" type="boolean">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="predefinedSearchCriteria">
+      <annotation>
+         <appinfo>
+            <meta.element labelAttribute="label"/>
+         </appinfo>
+         <documentation>
+            A provider for a predefined search
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="label" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The label of the predefined search
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="searchCriteriaProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The actual class providing the predefined search
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="useAsTemplate" type="boolean" use="required">
+            <annotation>
+               <documentation>
+                  Flag whether to use the predefined search as template or invoke it directly.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         0.1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension point=&quot;com.lhsystems.rcp.ui.search.configuration&quot;&gt;
+      &lt;configuration
+            criteriaDialogProvider=&quot;com.lhsystems.sample.search.SampleSearchCriteriaDialogProvider&quot;
+            id=&quot;com.lhsystems.sample.search.configuration&quot;
+            labelizer=&quot;com.lhsystems.sample.search.SampleSearchLabelizer&quot;
+            name=&quot;Sample&quot;
+            runAsJob=&quot;true&quot;
+            search=&quot;com.lhsystems.sample.search.SearchSearch&quot;&gt;
+         &lt;resultList
+               defaultAction=&quot;com.lhsystems.sample.search.action.EntryOpenAction&quot;
+               labelProvider=&quot;com.lhsystems.sample.search.provider.SampleTableLabelProvider&quot;&gt;
+          &lt;column
+    alignment=&quot;trail&quot;
+              header=&quot;Name&quot;
+              resizable=&quot;true&quot;
+             width=&quot;100&quot;&gt;
+           &lt;sortingAspect
+                 class=&quot;com.lhsystems.sample.search.sort.NameSortingAspect&quot;
+                 id=&quot;com.lhsystems.sample.search.sort.NameSortingAspect&quot;
+                 order=&quot;asc&quot;/&gt;
+          &lt;/column&gt;
+          &lt;column
+             header=&quot;Surname&quot;
+                resizable=&quot;true&quot;
+                width=&quot;100&quot;&gt;
+         &lt;sortingAspect
+                 class=&quot;com.lhsystems.sample.search.sort.SurnameSortingAspect&quot;
+                 id=&quot;com.lhsystems.sample.search.sort.SurnameSortingAspect&quot;
+                 order=&quot;asc&quot;/&gt;
+          &lt;/column&gt;
+          &lt;sortingAspectGroup name=&quot;Sort by Surname and Name&quot;&gt;
+           &lt;sortingAspect
+                 class=&quot;com.lhsystems.sample.search.sort.SurnameSortingAspect&quot;
+                 id=&quot;com.lhsystems.sample.search.sort.SurnameSortingAspect&quot;
+                 order=&quot;asc&quot;/&gt;
+           &lt;sortingAspect
+                 class=&quot;com.lhsystems.sample.search.sort.NameSortingAspect&quot;
+                 id=&quot;com.lhsystems.sample.search.sort.NameSortingAspect&quot;
+                 order=&quot;asc&quot;/&gt;
+          &lt;/sortingAspectGroup&gt;
+          &lt;sortingAspectGroup name=&quot;Sort by Name and Surname&quot;&gt;
+           &lt;sortingAspect
+                 class=&quot;com.lhsystems.sample.search.sort.NameSortingAspect&quot;
+                 id=&quot;com.lhsystems.sample.search.sort.NameSortingAspect&quot;
+                 order=&quot;asc&quot;/&gt;
+           &lt;sortingAspect
+                 class=&quot;com.lhsystems.sample.search.sort.SurnameSortingAspect&quot;
+                 id=&quot;com.lhsystems.sample.search.sort.SurnameSortingAspect&quot;
+                 order=&quot;asc&quot;/&gt;
+          &lt;/sortingAspectGroup&gt;
+         &lt;/resultList&gt;
+      &lt;/configuration&gt;
+   &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiInfo"/>
+      </appinfo>
+      <documentation>
+         &lt;li&gt; The value of the &lt;code&gt;criteriaDialogProvider&lt;/code&gt; attribute must represent a subclass of &lt;code&gt;com.lhsystems.rcp.ui.search.configuration.detail.ISearchCriteriaDialogProvider&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt; The value of the &lt;code&gt;labelizer&lt;/code&gt; attribute must represent a subclass of &lt;code&gt;com.lhsystems.rcp.ui.search.configuration.detail.ISearchLabelizer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt; The value of the &lt;code&gt;search&lt;/code&gt; attribute must represent a subclass of &lt;code&gt;com.lhsystems.rcp.ui.search.configuration.detail.ISearch&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt; The value of the &lt;code&gt;defaultAction&lt;/code&gt; attribute must represent a subclass of &lt;code&gt;com.lhsystems.rcp.ui.search.configuration.detail.ISearchResultListActionDelegate&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt; The value of the &lt;code&gt;labelProvider&lt;/code&gt; attribute must represent a subclass of &lt;code&gt;org.eclipse.jface.viewers.ITableLabelProvider&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt; The value of the &lt;code&gt;class&lt;/code&gt; attribute of a &lt;code&gt;sortingAspect&lt;/code&gt; element must represent a subclass of &lt;code&gt;com.lhsystems.rcp.ui.sort.aspect.ISortingAspect&lt;/code&gt;.&lt;/li&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         There is no supplied implementation within this plugin.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright (c) 2004, 2005 Lufthansa Systems
+All rights reserved. 
+ 
+This program and the accompanying materials are proprietary information of Lufthansa Systems.
+Use is subject to license terms.
+      </documentation>
+   </annotation>
+
+</schema>

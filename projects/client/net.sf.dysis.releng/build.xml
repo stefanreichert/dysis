@@ -1,0 +1,80 @@
+<project basedir="." name="net.sf.dysis.releng" default="build.client">
+	
+	<tstamp/>
+	    
+	<property file="build.properties" />
+	<property name="build.type" value="D"/>
+	<property name="build.number" value="0"/>
+
+	<target name="clean.external.folders">
+		<delete dir="${buildDirectory}" />
+		<mkdir dir="${buildDirectory}" />
+	</target>
+
+	<target name="export.client.projects">
+		<!-- Copy plugins -->
+		<mkdir dir="${buildDirectory}/plugins" />
+		<copy todir="${buildDirectory}/plugins">
+			<fileset dir="..">
+				<!-- Dysis plugins -->
+				<include name="net.sf.dysis.application/**" />
+				<include name="net.sf.dysis.application.update/**" />
+				<include name="net.sf.dysis.base.ui/**" />
+				<include name="net.sf.dysis.base.ui.authentication/**" />
+				<include name="net.sf.dysis.base.ui.search/**" />
+				<include name="net.sf.dysis.base.ui.dataprovider/**" />
+				<include name="net.sf.dysis.base.ui.dataprovider.cache/**" />
+				<include name="net.sf.dysis.logging/**" />
+				<include name="net.sf.dysis.planning.ui/**" />
+				<include name="net.sf.dysis.resource.ui/**" />
+				<include name="net.sf.dysis.timesheet.ui/**" />
+				<include name="net.sf.dysis.planning.ui/**" />
+				<include name="net.sf.dysis.planning.ui.help/**" />
+				<include name="net.sf.dysis.help.ui/**" />
+				<include name="net.sf.dysis.core.client.osgi/**" />
+				<include name="net.sf.dysis.*.nl_en/**" />
+				<!-- 3rd party plugins -->
+				<include name="org.apache.commons.pool/**" />
+				<include name="org.apache.log4j/**" />
+				<include name="org.eclipse.swt.nebula/**" />
+				<include name="org.eclipse.springframework**/**" />
+				<include name="org.springframework**/**" />
+				<include name="com.springsource**/**" />
+			</fileset>
+		</copy>
+		<!-- Copy features -->
+		<mkdir dir="${buildDirectory}/features" />
+		<copy todir="${buildDirectory}/features">
+			<fileset dir="..">
+				<include name="net.sf.dysis/**" />
+				<include name="net.sf.dysis.nl/**" />
+				<include name="net.sf.dysis.additions/**" />
+				<include name="net.sf.dysis.additions.nl/**" />
+			</fileset>
+		</copy>
+	</target>
+
+    <target name="import.client.distribution">
+        <mkdir dir="dist" />
+        <copy file="${buildDirectory}/${build.type}.dysis/dysis-win32.win32.x86.zip" todir="dist" />
+    </target>
+
+	<target name="build.client" depends="clean.external.folders, export.client.projects">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" failonerror="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.ant.core.antRunner" />
+			<arg value="-buildfile" />
+			<arg value="${eclipseLocation}/plugins/org.eclipse.pde.build_${pdeBuildPluginVersion}/scripts/productBuild/productBuild.xml" />
+			<arg value="-Dtimestamp=${TSTAMP}" />
+			<arg value="-DbuildType=${build.type}" />
+			<arg value="-DforceContextQualifier=${build.type}${build.number}-v${DSTAMP}" />
+			<arg value="-DgenerateFeatureVersionSuffix=true" />
+			<classpath>
+				<pathelement location="${eclipseLocation}/plugins/org.eclipse.equinox.launcher_${equinoxLauncherPluginVersion}.jar" />
+			</classpath>
+		</java>
+		<antcall target="import.client.distribution"/>
+	</target>	
+	
+</project>
+

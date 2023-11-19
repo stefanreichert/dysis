@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis PDE Test Utilities Plug-in
+Bundle-SymbolicName: net.sf.dysis.pde.test.utils;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ActivationPolicy: lazy
+Export-Package: net.sf.dysis.pde.test.utils
+Require-Bundle: org.eclipse.jdt.junit,
+ org.apache.ant,
+ org.junit,
+ org.eclipse.core.runtime;bundle-version="3.4.0"
+Bundle-Vendor: Stefan Reichert
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

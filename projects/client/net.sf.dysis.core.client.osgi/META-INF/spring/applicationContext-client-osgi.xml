@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:osgi="http://www.springframework.org/schema/osgi"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+                      
+    <osgi:service id="activityRemoteServiceOSGi" ref="activityRemoteService"
+        interface="net.sf.dysis.planing.core.service.IActivityRemoteService">
+    </osgi:service>
+    <osgi:service id="projectRemoteServiceOSGi" ref="projectRemoteService"
+        interface="net.sf.dysis.planing.core.service.IProjectRemoteService">
+    </osgi:service>
+    <osgi:service id="personRemoteServiceOSGi" ref="personRemoteService"
+        interface="net.sf.dysis.resource.core.service.IPersonRemoteService">
+    </osgi:service>
+    <osgi:service id="sessionRemoteServiceOSGi" ref="sessionRemoteService"
+        interface="net.sf.dysis.util.core.service.ISessionRemoteService">
+    </osgi:service>
+</beans>

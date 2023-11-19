@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="net.sf.dysis.test" default="run.test">
+	<!-- =====================================================
+	          Execution targets             
+	     ===================================================== -->
+	<property name="test.root" value="C:/automated testing dysis" />
+	<property name="test.directory" value="${test.root}/dysis" />
+	<property name="test.pde.listener" value="${test.root}/pdetest/listener" />
+	<property name="test.plugin" value="net.sf.dysis.base.ui.test" />
+
+	<path id="equinox.launcher.classpath">
+		<fileset dir="${test.directory}/plugins/">
+			<include name="org.eclipse.equinox.launcher**.jar" />
+		</fileset>
+	</path>
+
+	<path id="pde.test.listener.classpath">
+		<fileset dir="${test.pde.listener}">
+			<include name="**/*.jar" />
+			<include name="*.jar" />
+			<include name="org.junit**/*" />
+			<include name="org.apache.ant**/*" />
+		</fileset>
+	</path>
+
+	<target name="run.test">
+		<parallel>
+			<daemons>
+				<antcall target="start.listener" />
+			</daemons>
+			<sequential>
+				<sleep seconds="2" />
+				<antcall target="execute.test" />
+			</sequential>
+		</parallel>
+	</target>
+
+	<target name="start.listener">
+		<java classname="net.sf.dysis.pde.test.utils.DysisPDETestManager" fork="yes" classpathref="pde.test.listener.classpath">
+			<arg line="${test.plugin} 2401 '${basedir}/test/result.xml'" />
+		</java>
+	</target>
+
+	<target name="execute.test" description="Run JUnit plugin tests">
+		<java classname="org.eclipse.equinox.launcher.Main" fork="true" failonerror="true">
+			<arg value="-clean" />
+			<arg value="-data" />
+			<arg value="${test.directory}/workspace" />
+			<arg line="-application org.eclipse.pde.junit.runtime.uitestapplication" />
+			<arg line="-port 2401" />
+			<arg line="-testApplication net.sf.dysis.application.application" />
+			<arg line="-testPluginName net.sf.dysis.base.ui.test" />
+			<arg line="-className net.sf.dysis.base.ui.test.DysisBaseUITest" />
+			<arg line="-dysis.username sreichert" />
+			<arg line="-dysis.password dysis" />
+			<arg line="-dysis.language de" />
+			<arg line="-nl de" />
+			<arg value="-Dtimestamp=${timestamp}" />
+			<classpath>
+				<path refid="equinox.launcher.classpath" />
+			</classpath>
+		</java>
+	</target>
+</project>

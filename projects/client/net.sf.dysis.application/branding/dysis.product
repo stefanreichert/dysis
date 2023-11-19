@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.4"?>
+
+<product name="Dysis" id="net.sf.dysis.application.dysis_product" application="net.sf.dysis.application.application" version="0.1.0" useFeatures="true">
+
+   <aboutInfo>
+      <image path="/net.sf.dysis.application/icons/Dysis_Application.gif"/>
+      <text>
+         Dysis TimeTracking
+
+Copyright (c) 2008-2009 Stefan Reichert. All rights reserved.
+This program and the accompanying materials are made available under the
+terms of the Eclipse Public License v1.0 which accompanies this
+distribution, and is available at http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Stefan Reichert - initial API and implementation
+    Peter Friese - initial API
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+      <linux>/net.sf.dysis.application/branding/config.ini</linux>
+      <macosx>/net.sf.dysis.application/branding/config.ini</macosx>
+      <solaris>/net.sf.dysis.application/branding/config.ini</solaris>
+      <win32>/net.sf.dysis.application/branding/config.ini</win32>
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/net.sf.dysis.application/icons/Dysis_16.gif" i32="/net.sf.dysis.application/icons/Dysis_32.gif" i48="/net.sf.dysis.application/icons/Dysis_48.gif"/>
+
+   <splash
+      location="net.sf.dysis.application" />
+   <launcher name="Dysis">
+      <solaris/>
+      <win useIco="true">
+         <ico path="/net.sf.dysis.application/icons/Dysis.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+      <windows>JRE 5</windows>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.rcp" version="3.4.100.r341_v20080814-989JESIEdAciFYfkZZsBfSwQ2341"/>
+      <feature id="net.sf.dysis" version="0.1.0"/>
+      <feature id="net.sf.dysis.nl" version="0.1.0"/>
+      <feature id="net.sf.dysis.additions" version="0.1.0"/>
+      <feature id="net.sf.dysis.additions.nl" version="0.1.0"/>
+   </features>
+
+</product>

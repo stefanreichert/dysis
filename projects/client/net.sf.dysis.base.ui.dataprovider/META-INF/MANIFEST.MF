@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Base UI Dataprovider Plug-in
+Bundle-SymbolicName: net.sf.dysis.base.ui.dataprovider;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Eclipse-LazyStart: true
+Export-Package: net.sf.dysis.base.ui.dataprovider,
+ net.sf.dysis.base.ui.dataprovider.cache,
+ net.sf.dysis.base.ui.dataprovider.internal.cache;x-friends:="net.sf.dysis.base.ui.dataprovider.test",
+ net.sf.dysis.base.ui.dataprovider.key,
+ net.sf.dysis.base.ui.dataprovider.registry
+Bundle-Activator: net.sf.dysis.base.ui.dataprovider.internal.Activator
+Bundle-ActivationPolicy: lazy

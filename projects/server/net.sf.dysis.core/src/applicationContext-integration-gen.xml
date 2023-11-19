@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="sessionDAO">
+		<property name="proxyInterfaces" value="net.sf.dysis.util.core.integration.ISessionDAO"/>
+		<property name="target" ref="sessionDAOTarget"/>
+		<property name="interceptorNames">
+			<list>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.util.core.integration.SessionDAOImpl" id="sessionDAOTarget">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="projectDAO">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.integration.IProjectDAO"/>
+		<property name="target" ref="projectDAOTarget"/>
+		<property name="interceptorNames">
+			<list>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.integration.ProjectDAOImpl" id="projectDAOTarget">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="activityDAO">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.integration.IActivityDAO"/>
+		<property name="target" ref="activityDAOTarget"/>
+		<property name="interceptorNames">
+			<list>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.integration.ActivityDAOImpl" id="activityDAOTarget">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="timeEntryDAO">
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.integration.ITimeEntryDAO"/>
+		<property name="target" ref="timeEntryDAOTarget"/>
+		<property name="interceptorNames">
+			<list>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.planing.core.integration.TimeEntryDAOImpl" id="timeEntryDAOTarget">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		
+	
+
+	</bean>
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="personDAO">
+		<property name="proxyInterfaces" value="net.sf.dysis.resource.core.integration.IPersonDAO"/>
+		<property name="target" ref="personDAOTarget"/>
+		<property name="interceptorNames">
+			<list>
+				
+	
+
+			</list>
+		</property>
+	</bean>
+
+	<bean class="net.sf.dysis.resource.core.integration.PersonDAOImpl" id="personDAOTarget">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		
+	
+
+	</bean>
+
+
+</beans>

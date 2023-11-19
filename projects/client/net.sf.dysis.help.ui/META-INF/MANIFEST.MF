@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Help UI Plug-in
+Bundle-SymbolicName: net.sf.dysis.help.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.help;bundle-version="3.3.101",
+ org.eclipse.help.base;bundle-version="3.3.101",
+ org.eclipse.help.ui;bundle-version="3.3.101",
+ org.eclipse.help.webapp;bundle-version="3.3.101",
+ org.eclipse.equinox.http.jetty;bundle-version="1.1.0",
+ org.eclipse.equinox.http.registry;bundle-version="1.0.100",
+ org.eclipse.equinox.http.servlet;bundle-version="1.0.100",
+ org.eclipse.equinox.jsp.jasper;bundle-version="1.0.100",
+ org.eclipse.equinox.jsp.jasper.registry;bundle-version="1.0.0",
+ org.apache.lucene.analysis;bundle-version="1.9.1",
+ org.apache.lucene;bundle-version="1.9.1",
+ org.apache.commons.cli;bundle-version="1.0.0",
+ org.apache.commons.logging;bundle-version="1.0.4",
+ org.apache.commons.el;bundle-version="1.0.0",
+ org.apache.jasper;bundle-version="5.5.17",
+ javax.servlet;bundle-version="2.4.0",
+ javax.servlet.jsp;bundle-version="2.0.0",
+ org.mortbay.jetty;bundle-version="5.1.14"

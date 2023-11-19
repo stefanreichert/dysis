@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="net.sf.dysis.core.web" default="do.build.release">
+	<!-- =====================================================
+	          Property file definition              
+	     ===================================================== -->
+	
+	<property file="build.properties" />
+	
+	<!-- =====================================================
+	          Classpath definitions              
+	     ===================================================== -->
+	
+	<path id="compile.classpath">
+		<fileset dir="${core.project.path}/lib/">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- =====================================================
+	          Targets for preparing tasks such as init              
+	     ===================================================== -->
+
+	<target name="compile" depends="init" description="Compiles the existing artefacts to .class files.">
+		<javac classpathref="compile.classpath" destdir="build/bin" encoding="Cp1252" debuglevel="lines,vars,source">
+    		<src path="${core.project.path}/src"/>
+		</javac>
+	</target>
+
+	<target name="init" description="Initializes this project for a build">
+	    <mkdir dir="dist" />
+	    <mkdir dir="build" />
+	    <mkdir dir="build/bin" />
+	</target>
+	    	
+	<target name="clean" description="Cleans all artefacts created by a build">
+		<delete dir="build" includeemptydirs="true" failonerror="false"/>
+	</target>
+	
+	<!-- =====================================================
+          Target for jaring the compiled code  
+     ===================================================== -->
+	
+	<target name="core.jar" depends="compile" description="Creates the core jar file from the artefacts.">
+		<jar destfile="build/${core.jar.file}">
+			<fileset dir="build/bin/" includes="**/*" />
+			<fileset dir="${core.project.path}/src/" includes="*.xml" />
+			<fileset dir="${core.project.path}/src/" includes="*.properties" />
+			<manifest>
+				<attribute name="Built-By" value="Stefan Reichert"/>
+				<attribute name="Implementation-Vendor" value="Dysis Developement Team"/>
+				<attribute name="Implementation-Title" value="Dysis Core"/>
+				<attribute name="Implementation-Version" value="0.1.0"/>
+		    </manifest>
+		</jar>
+	</target>
+
+	<target name="core.war" depends="clean, init, core.jar">
+		<delete file="build/${core.war.file}" failonerror="no"/>
+		<war destfile="dist/${core.war.file}" webxml="WebContent/WEB-INF/web.xml">
+			<webinf dir="WebContent/WEB-INF">
+				<filename name="*.*" />
+			</webinf>
+			<lib dir="${core.project.path}/lib">
+				<exclude name="hybridlabs-beautifier-1.1.9.jar" />
+				<exclude name="jalopy-1.5-RC3P1.jar" />
+			</lib>
+			<lib dir="build">
+				<filename name="${core.jar.file}" />
+			</lib>
+			<manifest>
+				<attribute name="Built-By" value="Stefan Reichert"/>
+				<attribute name="Implementation-Vendor" value="Dysis Developement Team"/>
+				<attribute name="Implementation-Title" value="Dysis Core Web"/>
+				<attribute name="Implementation-Version" value="0.1.0"/>
+		    </manifest>
+		</war>
+	</target>
+	
+	<target name="client.jar" depends="clean, init, core.jar" description="Creates the client core jar file from the artefacts.">
+		<delete file="dist/${core.client.jar.file}" failonerror="no"/>
+		<jar destfile="dist/${core.client.jar.file}">
+			<fileset dir="build/bin/">
+				<include name="**/I*Service.class"/>
+				<include name="**/IContextProvider.class"/>
+				<include name="**/SessionExpiredException.class"/>
+				<include name="**/ServiceException.class"/>
+				<include name="**/*DTO.class"/>
+				<include name="**/*DTOImpl.class"/>
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="Stefan Reichert"/>
+				<attribute name="Implementation-Vendor" value="Dysis Developement Team"/>
+				<attribute name="Implementation-Title" value="Dysis Core"/>
+				<attribute name="Implementation-Version" value="0.1.0"/>
+		    </manifest>
+		</jar>
+		<delete file="dist/${core.client.source.jar.file}" failonerror="no"/>
+		<zip destfile="dist/${core.client.source.jar.file}">
+			<fileset dir="${core.project.path}/src/">
+				<include name="**/I*Service.java"/>
+				<include name="**/*DTO.java"/>
+			</fileset>
+			<fileset dir="${core.project.path}/src/">
+				<include name="**/IContextProvider.java"/>
+				<include name="**/SessionExpiredException.java"/>
+				<include name="**/ServiceException.java"/>
+				<include name="**/*DTOImpl.java"/>
+			</fileset>
+		</zip>
+	</target>
+	
+	<!-- =====================================================
+          Target for release 
+     ===================================================== -->
+		
+	<target name="do.build.release" depends="core.war, client.jar" description="Creates the release artefacts.">
+		<antcall target="clean"/>
+	</target>
+	
+	<target name="do.publish.client">
+		<copy file="dist/${core.client.jar.file}" todir="${core.client.project.path}/lib" overwrite="true"/>
+	</target>
+
+	<!-- ==== LOCAL DEPLOYMENT ==== -->
+
+	<target name="do.local.deploy.tomcat">
+		<delete dir="${tomcat.root}/webapps/${core.war.file}" />
+		<delete file="${tomcat.root}/webapps/${core.war.file}.war" />
+		<copy file="dist/${core.war.file}" tofile="${tomcat.root}/webapps/${core.war.file}" />
+		<exec executable="${tomcat.root}/bin/catalina.bat" dir="${tomcat.root}">
+			<arg value="jpda" />
+			<arg value="start" />
+		</exec>
+	</target>
+</project>

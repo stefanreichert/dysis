@@ -1,0 +1,111 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:osgi="http://www.springframework.org/schema/osgi"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                      http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+ 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyPlaceholderConfigurer">
+        <property name="properties">
+            <props>
+                <prop key="core.remote.server">dysis.tomcat</prop>
+                <prop key="core.remote.port">8080</prop>
+                <prop key="core.remote.path">net.sf.dysis.core</prop>
+            </props>
+        </property>
+        <property name="systemPropertiesModeName">
+            <value>SYSTEM_PROPERTIES_MODE_OVERRIDE</value>
+        </property>
+    </bean>
+    
+	<bean class="net.sf.dysis.core.client.spring.HttpInvokerRequestExecutor" id="requestExecutor"/>
+    
+    <bean class="net.sf.dysis.core.client.internal.spring.ServiceExceptionHandlingAdvice" id="serviceExceptionHandlingAdvice"/>
+    
+    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="projectRemoteService">
+		<property name="target">
+   			<bean class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		        <property name="serviceUrl">
+		            <value>
+		                http://${core.remote.server}:${core.remote.port}/${core.remote.path}/remote/projectservice
+		            </value>
+		        </property>
+		        <property name="serviceInterface">
+		            <value>net.sf.dysis.planing.core.service.IProjectRemoteService</value>
+		        </property>
+		        <property name="httpInvokerRequestExecutor" ref="requestExecutor"/>
+    		</bean>
+    	</property>
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.service.IProjectRemoteService"/>
+		<property name="interceptorNames">
+            <list>
+                <value>serviceExceptionHandlingAdvice</value>
+            </list>
+        </property>
+	</bean>
+	
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="activityRemoteService">
+		<property name="target">
+   			<bean class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		        <property name="serviceUrl">
+		            <value>
+		                http://${core.remote.server}:${core.remote.port}/${core.remote.path}/remote/activityservice
+		            </value>
+		        </property>
+		        <property name="serviceInterface">
+		            <value>net.sf.dysis.planing.core.service.IActivityRemoteService</value>
+		        </property>
+		        <property name="httpInvokerRequestExecutor" ref="requestExecutor"/>
+    		</bean>
+    	</property>
+		<property name="proxyInterfaces" value="net.sf.dysis.planing.core.service.IActivityRemoteService"/>
+		<property name="interceptorNames">
+            <list>
+                <value>serviceExceptionHandlingAdvice</value>
+            </list>
+        </property>
+	</bean>
+	
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="personRemoteService">
+		<property name="target">
+   			<bean class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		        <property name="serviceUrl">
+		            <value>
+		                http://${core.remote.server}:${core.remote.port}/${core.remote.path}/remote/personservice
+		            </value>
+		        </property>
+		        <property name="serviceInterface">
+		            <value>net.sf.dysis.resource.core.service.IPersonRemoteService</value>
+		        </property>
+		        <property name="httpInvokerRequestExecutor" ref="requestExecutor"/>
+    		</bean>
+    	</property>
+		<property name="proxyInterfaces" value="net.sf.dysis.resource.core.service.IPersonRemoteService"/>
+		<property name="interceptorNames">
+            <list>
+                <value>serviceExceptionHandlingAdvice</value>
+            </list>
+        </property>
+	</bean>
+    
+    <bean class="org.springframework.aop.framework.ProxyFactoryBean" id="sessionRemoteService">
+        <property name="target">
+            <bean class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+                <property name="serviceUrl">
+                    <value>
+                        http://${core.remote.server}:${core.remote.port}/${core.remote.path}/remote/sessionservice
+                    </value>
+                </property>
+                <property name="serviceInterface">
+                    <value>net.sf.dysis.util.core.service.ISessionRemoteService</value>
+                </property>
+                <property name="httpInvokerRequestExecutor" ref="requestExecutor"/>
+            </bean>
+        </property>
+        <property name="proxyInterfaces" value="net.sf.dysis.util.core.service.ISessionRemoteService"/>
+        <property name="interceptorNames">
+            <list>
+                <value>serviceExceptionHandlingAdvice</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dysis Base UI Dataprovider Cache Plug-in
+Bundle-SymbolicName: net.sf.dysis.base.ui.dataprovider.cache;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Stefan Reichert
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.forms,
+ net.sf.dysis.base.ui.dataprovider
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: net.sf.dysis.base.ui.dataprovider.cache
+Bundle-Activator: net.sf.dysis.base.ui.dataprovider.cache.internal.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin

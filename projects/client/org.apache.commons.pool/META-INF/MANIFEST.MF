@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Commons Pool Plug-in
+Bundle-SymbolicName: org.apache.commons.pool; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: commons-pool.jar
+Bundle-Vendor: Stefan Reichert
+Export-Package: org.apache.commons.pool,
+ org.apache.commons.pool.impl
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

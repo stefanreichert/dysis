@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<toc label="Dysis Online Hilfe" topic="html/index.html">
+   <topic label="Getting Started" href="html/pt01.html">
+      <topic label="Übersicht" href="html/ch01.html"/>
+   </topic>
+   <topic label="Konzepte und Ideen" href="html/pt02.html">
+      <topic label="Konzept A" href="html/ch02.html"/>
+      <topic label="Konzept B" href="html/ch03.html"/>
+   </topic>
+   <topic label="Projekte, Aufgaben und Resourcen" href="html/pt03.html">
+      <topic label="Projekte" href="html/ch04.html"/>
+      <topic label="Aufgaben" href="html/ch05.html"/>
+      <topic label="Resourcen" href="html/ch06.html"/>
+   </topic>
+   <topic label="Zeiterfassung" href="html/pt04.html">
+      <topic label="Zeiten erfassen" href="html/ch07.html"/>
+   </topic>
+</toc>

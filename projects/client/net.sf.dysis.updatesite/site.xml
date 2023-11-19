@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/net.sf.dysis.additions_0.1.0.200905011649.jar" id="net.sf.dysis.additions" version="0.1.0.200905011649">
+      <category name="net.sf.dysis"/>
+   </feature>
+   <feature url="features/org.eclipse.rcp_3.4.100.r341_v20080814-989JESIEdAciFYfkZZsBfSwQ2341.jar" id="org.eclipse.rcp" version="3.4.100.r341_v20080814-989JESIEdAciFYfkZZsBfSwQ2341">
+      <category name="net.sf.dysis"/>
+   </feature>
+   <feature url="features/net.sf.dysis_0.1.0.200905011649.jar" id="net.sf.dysis" version="0.1.0.200905011649">
+      <category name="net.sf.dysis"/>
+   </feature>
+   <category-def name="net.sf.dysis" label="Dysis"/>
+</site>

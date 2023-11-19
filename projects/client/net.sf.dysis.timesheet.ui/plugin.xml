@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="net.sf.dysis.timesheet.ui.editor.Timesheet"
+            default="false"
+            icon="img/timesheet.gif"
+            id="net.sf.dysis.timesheet.ui.editor.Timesheet"
+            name="%editorName">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="net.sf.dysis.timesheet.ui.actionSet2"
+            label="%actionSetName"
+            visible="true">
+         <action
+               class="net.sf.dysis.timesheet.ui.action.TimesheetOpenAction"
+               definitionId="net.sf.dysis.timesheet.ui.command.openTimesheetCommand"
+               icon="img/timesheet.gif"
+               id="net.sf.dysis.timesheet.ui.action.TimesheetOpenAction"
+               label="%actionName"
+               menubarPath="file/edit"
+               style="push">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="net.sf.dysis.timesheet.ui.perspective.TimesheetPerspective"
+            icon="img/timesheet.gif"
+            id="net.sf.dysis.timesheet.ui.perspective.TimesheetPerspective"
+            name="%perspectiveName">
+      </perspective>
+   </extension>
+   <extension
+         point="net.sf.dysis.base.ui.dataprovider">
+      <provider
+            class="net.sf.dysis.timesheet.ui.dataprovider.ActivityTimeEntryDataProvider"
+            id="net.sf.dysis.timesheet.ui.dataprovider.ActivityTimeEntryDataProvider"
+            name="Activity TimeEntries">
+      </provider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="net.sf.dysis.timesheet.ui.command.openTimesheetCommand"
+            name="Open Timesheet Command">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="net.sf.dysis.timesheet.ui.command.openTimesheetCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+Z">
+      </key>
+   </extension>
+
+</plugin>

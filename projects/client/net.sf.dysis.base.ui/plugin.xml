@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="configuration" name="net.sf.dysis.bas.ui.search" schema="schema/configuration.exsd"/>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="net.sf.dysis.base.ui.navigator.NavigatorElement"
+            objectClass="net.sf.dysis.base.ui.navigator.NavigatorElement">
+         <action
+               class="net.sf.dysis.base.ui.internal.navigator.action.NavigatorElementRefreshAction"
+               icon="img/refresh.gif"
+               id="net.sf.dysis.base.ui.navigator.internal.action.NavigatorElementRefreshAction"
+               label="%refreshActionName"
+               menubarPath="additions"
+               tooltip="Aktualisiert das ausgewählte Element">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="net.sf.dysis.base.ui.menu.FunctionNavigatorView"
+            icon="img/function_view.gif"
+            id="net.sf.dysis.base.ui.menu.FunctionNavigatorView"
+            name="%navigatorName">
+      </view>
+   </extension>
+
+</plugin>

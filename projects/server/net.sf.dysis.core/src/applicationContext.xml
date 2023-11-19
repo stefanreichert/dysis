@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="org.springframework.orm.hibernate3.HibernateTransactionManager" id="transactionManager">
+        <property name="sessionFactory">
+      <ref bean="sessionFactory"/>
+    </property>
+    </bean>
+    <bean class="org.springframework.transaction.interceptor.TransactionInterceptor" id="transactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager"/>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- The advice for the automatic authentication with context information. -->
+	<bean class="net.sf.dysis.system.core.ServiceExceptionAdvice" id="serviceExceptionAdvice"/>
+
+	<!-- The advice for the automatic authentication with context information. -->
+	<bean class="net.sf.dysis.system.core.ServerContextProvider" id="contextProvider"/>
+
+	<!-- The filter for the automatic authentication with context information. -->
+	<bean class="net.sf.dysis.system.core.ServerContextProviderFilter" id="contextProviderFilter"/>
+	
+	<!-- The advice for the automatic authentication with context information. -->
+	<bean class="net.sf.dysis.system.core.SecurityAdvice" id="securityAdvice">
+		<property name="contextProvider" ref="contextProvider"/>
+	</bean>
+</beans>
